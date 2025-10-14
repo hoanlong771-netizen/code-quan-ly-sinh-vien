@@ -1,3 +1,7 @@
+CODE BAI TAP BUOI 6 O TREN
+
+
+///////////
 # code-quan-ly-sinh-vien
 using System;
 using System.Linq;
