@@ -1,0 +1,183 @@
+using System;
+using System.Data;
+using System.Data.Entity;
+using System.Windows.Forms;
+
+namespace De02
+{
+    public partial class frmSanpham : Form
+    {
+        public frmSanpham()
+        {
+            InitializeComponent();
+        }
+
+        private void frmSanpham_Load(object sender, EventArgs e)
+        {
+            LoadLoaiSP();
+            LoadSanpham();
+        }
+
+        // ====== LOAD DỮ LIỆU ======
+        void LoadLoaiSP()
+        {
+            string sql = "SELECT * FROM LoaiSP";
+            DataTable dt = Database.GetData(sql);
+            cboLoaiSP.DataSource = dt;
+            cboLoaiSP.DisplayMember = "TenLoai";
+            cboLoaiSP.ValueMember = "MaLoai";
+        }
+
+        void LoadSanpham()
+        {
+            string sql = "SELECT MaSP, TenSP, NgayNhap, TenLoai " +
+                "FROM Sanpham SP JOIN LoaiSP L ON SP.MaLoai = L.MaLoai";
+            DataTable dt = Database.GetData(sql);
+            lvSanpham.Items.Clear();
+            foreach (DataRow row in dt.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["MaSP"].ToString());
+                item.SubItems.Add(row["TenSP"].ToString());
+
+                // Kiểm tra dữ liệu ngày có hợp lệ không
+                if (DateTime.TryParse(row["NgayNhap"].ToString(), out DateTime ngayNhap))
+                    item.SubItems.Add(ngayNhap.ToString("dd/MM/yyyy"));
+                else
+                    item.SubItems.Add("");
+
+                item.SubItems.Add(row["TenLoai"].ToString());
+                lvSanpham.Items.Add(item);
+            }
+        }
+
+        // ====== CHỌN DÒNG ======
+        private void lvSanpham_Click(object sender, EventArgs e)
+        {
+            if (lvSanpham.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lvSanpham.SelectedItems[0];
+                txtMaSP.Text = item.SubItems[0].Text;
+                txtTenSP.Text = item.SubItems[1].Text;
+
+                // ✅ Xử lý an toàn khi chuyển đổi chuỗi ngày
+                DateTime ngayNhap;
+                if (DateTime.TryParseExact(
+                        item.SubItems[2].Text,
+                        "dd/MM/yyyy",
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        System.Globalization.DateTimeStyles.None,
+                        out ngayNhap))
+                {
+                    dtNgaynhap.Value = ngayNhap;
+                }
+                else
+                {
+                    // Nếu rỗng hoặc sai định dạng, gán ngày hiện tại
+                    dtNgaynhap.Value = DateTime.Now;
+                }
+
+                cboLoaiSP.Text = item.SubItems[3].Text;
+            }
+        }
+
+        // ====== NÚT THÊM ======
+        private void btThem_Click(object sender, EventArgs e)
+        {
+            string sql = $"INSERT INTO Sanpham VALUES ('{txtMaSP.Text}', N'{txtTenSP.Text}', " +
+                         $"'{dtNgaynhap.Value:MM/dd/yyyy}', '{cboLoaiSP.SelectedValue}')";
+            Database.ExecuteNonQuery(sql);
+            LoadSanpham();
+            MessageBox.Show("Đã thêm sản phẩm!");
+        }
+
+        // ====== NÚT SỬA ======
+        private void btSua_Click(object sender, EventArgs e)
+        {
+            if (lvSanpham.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm để sửa!");
+                return;
+            }
+
+            string sql = $"UPDATE Sanpham SET TenSP = N'{txtTenSP.Text.Trim()}', " +
+                         $"NgayNhap = '{dtNgaynhap.Value:yyyy-MM-dd}', " +
+                         $"MaLoai = '{cboLoaiSP.SelectedValue}' " +
+                         $"WHERE MaSP = '{txtMaSP.Text.Trim()}'";
+
+            Database.ExecuteNonQuery(sql);
+
+            // ✅ Cập nhật dòng đang chọn trong ListView
+            ListViewItem item = lvSanpham.SelectedItems[0];
+            item.SubItems[1].Text = txtTenSP.Text;
+            item.SubItems[2].Text = dtNgaynhap.Value.ToString("dd/MM/yyyy");
+            item.SubItems[3].Text = cboLoaiSP.Text;
+
+            MessageBox.Show("Đã sửa thành công!");
+        }
+
+        // ====== NÚT XÓA ======
+        private void btXoa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa?",
+                "Xóa", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                string sql = $"DELETE FROM Sanpham WHERE MaSP='{txtMaSP.Text}'";
+                Database.ExecuteNonQuery(sql);
+                LoadSanpham();
+                MessageBox.Show("Đã xóa sản phẩm!");
+            }
+        }
+
+        // ====== NÚT TÌM ======
+        private void btTim_Click(object sender, EventArgs e)
+        {
+            string keyword = txtTim.Text.Trim();
+
+            string sql = "SELECT MaSP, TenSP, NgayNhap, TenLoai " +
+                         "FROM Sanpham SP JOIN LoaiSP L ON SP.MaLoai = L.MaLoai " +
+                         $"WHERE TenSP LIKE N'%{keyword}%'";
+
+            DataTable dt = Database.GetData(sql);
+            lvSanpham.Items.Clear();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["MaSP"].ToString());
+                item.SubItems.Add(row["TenSP"].ToString());
+
+                if (DateTime.TryParse(row["NgayNhap"].ToString(), out DateTime ngayNhap))
+                    item.SubItems.Add(ngayNhap.ToString("dd/MM/yyyy"));
+                else
+                    item.SubItems.Add("");
+
+                item.SubItems.Add(row["TenLoai"].ToString());
+                lvSanpham.Items.Add(item);
+            }
+
+            if (lvSanpham.Items.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm nào!", "Thông báo");
+            }
+        }
+
+        // ====== NÚT THOÁT ======
+        private void btThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+        "Bạn có muốn thoát không?",          // Nội dung thông báo
+        "Xác nhận thoát",                   // Tiêu đề hộp thoại
+        MessageBoxButtons.YesNo,            // Hai nút Có / Không
+        MessageBoxIcon.Question);           // Biểu tượng dấu hỏi
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close(); // Đóng form
+            }
+        }
+
+        private void lblTenSP_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
