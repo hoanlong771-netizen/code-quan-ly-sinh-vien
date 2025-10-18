@@ -1,0 +1,280 @@
+namespace De02
+{
+    partial class frmSanpham
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        private void InitializeComponent()
+        {
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lvSanpham = new System.Windows.Forms.ListView();
+            this.colMaSP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTenSP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colNgayNhap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLoaiSP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblMaSP = new System.Windows.Forms.Label();
+            this.lblTenSP = new System.Windows.Forms.Label();
+            this.lblNgaynhap = new System.Windows.Forms.Label();
+            this.lblLoaiSP = new System.Windows.Forms.Label();
+            this.txtMaSP = new System.Windows.Forms.TextBox();
+            this.txtTenSP = new System.Windows.Forms.TextBox();
+            this.dtNgaynhap = new System.Windows.Forms.DateTimePicker();
+            this.cboLoaiSP = new System.Windows.Forms.ComboBox();
+            this.btThem = new System.Windows.Forms.Button();
+            this.btSua = new System.Windows.Forms.Button();
+            this.btXoa = new System.Windows.Forms.Button();
+            this.btLuu = new System.Windows.Forms.Button();
+            this.btKLuu = new System.Windows.Forms.Button();
+            this.btThoat = new System.Windows.Forms.Button();
+            this.txtTim = new System.Windows.Forms.TextBox();
+            this.btTim = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Location = new System.Drawing.Point(270, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(250, 30);
+            this.lblTitle.Text = "DANH MỤC SẢN PHẨM";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lvSanpham
+            // 
+            this.lvSanpham.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colMaSP,
+            this.colTenSP,
+            this.colNgayNhap,
+            this.colLoaiSP});
+            this.lvSanpham.FullRowSelect = true;
+            this.lvSanpham.GridLines = true;
+            this.lvSanpham.HideSelection = false;
+            this.lvSanpham.Location = new System.Drawing.Point(20, 70);
+            this.lvSanpham.MultiSelect = false;
+            this.lvSanpham.Name = "lvSanpham";
+            this.lvSanpham.Size = new System.Drawing.Size(420, 200);
+            this.lvSanpham.TabIndex = 0;
+            this.lvSanpham.UseCompatibleStateImageBehavior = false;
+            this.lvSanpham.View = System.Windows.Forms.View.Details;
+            this.lvSanpham.Click += new System.EventHandler(this.lvSanpham_Click);
+            // 
+            // colMaSP
+            // 
+            this.colMaSP.Text = "Mã SP";
+            this.colMaSP.Width = 70;
+            // 
+            // colTenSP
+            // 
+            this.colTenSP.Text = "Tên sản phẩm";
+            this.colTenSP.Width = 120;
+            // 
+            // colNgayNhap
+            // 
+            this.colNgayNhap.Text = "Ngày nhập";
+            this.colNgayNhap.Width = 110;
+            // 
+            // colLoaiSP
+            // 
+            this.colLoaiSP.Text = "Loại SP";
+            this.colLoaiSP.Width = 100;
+            // 
+            // lblMaSP
+            // 
+            this.lblMaSP.AutoSize = true;
+            this.lblMaSP.Location = new System.Drawing.Point(470, 80);
+            this.lblMaSP.Name = "lblMaSP";
+            this.lblMaSP.Size = new System.Drawing.Size(50, 13);
+            this.lblMaSP.Text = "Mã SP:";
+            // 
+            // lblTenSP
+            // 
+            this.lblTenSP.AutoSize = true;
+            this.lblTenSP.Location = new System.Drawing.Point(470, 115);
+            this.lblTenSP.Name = "lblTenSP";
+            this.lblTenSP.Size = new System.Drawing.Size(52, 13);
+            this.lblTenSP.Text = "Tên SP:";
+            // 
+            // lblNgaynhap
+            // 
+            this.lblNgaynhap.AutoSize = true;
+            this.lblNgaynhap.Location = new System.Drawing.Point(470, 150);
+            this.lblNgaynhap.Name = "lblNgaynhap";
+            this.lblNgaynhap.Size = new System.Drawing.Size(66, 13);
+            this.lblNgaynhap.Text = "Ngày nhập:";
+            // 
+            // lblLoaiSP
+            // 
+            this.lblLoaiSP.AutoSize = true;
+            this.lblLoaiSP.Location = new System.Drawing.Point(470, 185);
+            this.lblLoaiSP.Name = "lblLoaiSP";
+            this.lblLoaiSP.Size = new System.Drawing.Size(52, 13);
+            this.lblLoaiSP.Text = "Loại SP:";
+            // 
+            // txtMaSP
+            // 
+            this.txtMaSP.Location = new System.Drawing.Point(550, 77);
+            this.txtMaSP.Name = "txtMaSP";
+            this.txtMaSP.Size = new System.Drawing.Size(150, 20);
+            // 
+            // txtTenSP
+            // 
+            this.txtTenSP.Location = new System.Drawing.Point(550, 112);
+            this.txtTenSP.Name = "txtTenSP";
+            this.txtTenSP.Size = new System.Drawing.Size(150, 20);
+            // 
+            // dtNgaynhap
+            // 
+            this.dtNgaynhap.CustomFormat = "dd/MM/yyyy";
+            this.dtNgaynhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtNgaynhap.Location = new System.Drawing.Point(550, 147);
+            this.dtNgaynhap.Name = "dtNgaynhap";
+            this.dtNgaynhap.Size = new System.Drawing.Size(150, 20);
+            // 
+            // cboLoaiSP
+            // 
+            this.cboLoaiSP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoaiSP.FormattingEnabled = true;
+            this.cboLoaiSP.Location = new System.Drawing.Point(550, 182);
+            this.cboLoaiSP.Name = "cboLoaiSP";
+            this.cboLoaiSP.Size = new System.Drawing.Size(150, 21);
+            // 
+            // txtTim
+            // 
+            this.txtTim.Location = new System.Drawing.Point(20, 25);
+            this.txtTim.Name = "txtTim";
+            this.txtTim.Size = new System.Drawing.Size(120, 20);
+            // 
+            // btTim
+            // 
+            this.btTim.Location = new System.Drawing.Point(150, 23);
+            this.btTim.Name = "btTim";
+            this.btTim.Size = new System.Drawing.Size(60, 25);
+            this.btTim.Text = "Tìm";
+            this.btTim.UseVisualStyleBackColor = true;
+            this.btTim.Click += new System.EventHandler(this.btTim_Click);
+            // 
+            // btThem
+            // 
+            this.btThem.Location = new System.Drawing.Point(20, 285);
+            this.btThem.Name = "btThem";
+            this.btThem.Size = new System.Drawing.Size(70, 30);
+            this.btThem.Text = "Thêm";
+            this.btThem.UseVisualStyleBackColor = true;
+            this.btThem.Click += new System.EventHandler(this.btThem_Click);
+            // 
+            // btSua
+            // 
+            this.btSua.Location = new System.Drawing.Point(100, 285);
+            this.btSua.Name = "btSua";
+            this.btSua.Size = new System.Drawing.Size(70, 30);
+            this.btSua.Text = "Sửa";
+            this.btSua.UseVisualStyleBackColor = true;
+            this.btSua.Click += new System.EventHandler(this.btSua_Click);
+            // 
+            // btXoa
+            // 
+            this.btXoa.Location = new System.Drawing.Point(180, 285);
+            this.btXoa.Name = "btXoa";
+            this.btXoa.Size = new System.Drawing.Size(70, 30);
+            this.btXoa.Text = "Xóa";
+            this.btXoa.UseVisualStyleBackColor = true;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
+            // 
+            // btLuu
+            // 
+            this.btLuu.Location = new System.Drawing.Point(260, 285);
+            this.btLuu.Name = "btLuu";
+            this.btLuu.Size = new System.Drawing.Size(70, 30);
+            this.btLuu.Text = "Lưu";
+            this.btLuu.UseVisualStyleBackColor = true;
+            // 
+            // btKLuu
+            // 
+            this.btKLuu.Location = new System.Drawing.Point(340, 285);
+            this.btKLuu.Name = "btKLuu";
+            this.btKLuu.Size = new System.Drawing.Size(70, 30);
+            this.btKLuu.Text = "K.Lưu";
+            this.btKLuu.UseVisualStyleBackColor = true;
+            // 
+            // btThoat
+            // 
+            this.btThoat.Location = new System.Drawing.Point(420, 285);
+            this.btThoat.Name = "btThoat";
+            this.btThoat.Size = new System.Drawing.Size(70, 30);
+            this.btThoat.Text = "Thoát";
+            this.btThoat.UseVisualStyleBackColor = true;
+            this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
+            // 
+            // frmSanpham
+            // 
+            this.ClientSize = new System.Drawing.Size(740, 340);
+            this.Controls.Add(this.btThoat);
+            this.Controls.Add(this.btKLuu);
+            this.Controls.Add(this.btLuu);
+            this.Controls.Add(this.btXoa);
+            this.Controls.Add(this.btSua);
+            this.Controls.Add(this.btThem);
+            this.Controls.Add(this.btTim);
+            this.Controls.Add(this.txtTim);
+            this.Controls.Add(this.cboLoaiSP);
+            this.Controls.Add(this.dtNgaynhap);
+            this.Controls.Add(this.txtTenSP);
+            this.Controls.Add(this.txtMaSP);
+            this.Controls.Add(this.lblLoaiSP);
+            this.Controls.Add(this.lblNgaynhap);
+            this.Controls.Add(this.lblTenSP);
+            this.Controls.Add(this.lblMaSP);
+            this.Controls.Add(this.lvSanpham);
+            this.Controls.Add(this.lblTitle);
+            this.Name = "frmSanpham";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "QUẢN LÝ SẢN PHẨM";
+            this.Load += new System.EventHandler(this.frmSanpham_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ListView lvSanpham;
+        private System.Windows.Forms.ColumnHeader colMaSP;
+        private System.Windows.Forms.ColumnHeader colTenSP;
+        private System.Windows.Forms.ColumnHeader colNgayNhap;
+        private System.Windows.Forms.ColumnHeader colLoaiSP;
+        private System.Windows.Forms.Label lblMaSP;
+        private System.Windows.Forms.Label lblTenSP;
+        private System.Windows.Forms.Label lblNgaynhap;
+        private System.Windows.Forms.Label lblLoaiSP;
+        private System.Windows.Forms.TextBox txtMaSP;
+        private System.Windows.Forms.TextBox txtTenSP;
+        private System.Windows.Forms.DateTimePicker dtNgaynhap;
+        private System.Windows.Forms.ComboBox cboLoaiSP;
+        private System.Windows.Forms.TextBox txtTim;
+        private System.Windows.Forms.Button btTim;
+        private System.Windows.Forms.Button btThem;
+        private System.Windows.Forms.Button btSua;
+        private System.Windows.Forms.Button btXoa;
+        private System.Windows.Forms.Button btLuu;
+        private System.Windows.Forms.Button btKLuu;
+        private System.Windows.Forms.Button btThoat;
+    }
+}
