@@ -1,0 +1,5 @@
+C:\HoThanhCong_2380600241\QLrapphim\QLrapphim\obj\Debug\QLrapphim.csproj.AssemblyReference.cache
+C:\HoThanhCong_2380600241\QLrapphim\QLrapphim\obj\Debug\QLrapphim.Form1.resources
+C:\HoThanhCong_2380600241\QLrapphim\QLrapphim\obj\Debug\QLrapphim.Properties.Resources.resources
+C:\HoThanhCong_2380600241\QLrapphim\QLrapphim\obj\Debug\QLrapphim.csproj.GenerateResource.cache
+C:\HoThanhCong_2380600241\QLrapphim\QLrapphim\obj\Debug\QLrapphim.csproj.CoreCompileInputs.cache
